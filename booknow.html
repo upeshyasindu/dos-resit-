@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now - FilmZone</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="js/booking.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="icons/logo1.png" alt="FilmZone Logo" class="logo-img">
+            <h1>FilmZone</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" >Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="upcoming.html">Upcoming Movies</a></li>
+                <li><a href="food.html">Food Stall</a></li>
+                <li><a href="nowshowing.html">Now Showing</a></li>
+                <li><a href="faq.html">Queries & FAQs</a></li>
+                <li><a href="booknow.html" class="active">Book Now</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="booking" id="booking">
+            <h2>Book Your Tickets</h2>
+            <div class="movie-grid-booking">
+                <article>
+                    <h3>Now Showing</h3>
+                    <img src="images/dontbreathe.jpg" alt="Action Thriller Poster" class="movie-img">
+                    <p>Action Thriller - Rs. 1000.00</p>
+                </article>
+                <article>
+                    <h3>Upcoming Movies</h3>
+                    <img src="images/avengers.jpg" alt="Sci-Fi Adventure Poster" class="movie-img">
+                    <p>Sci-Fi Adventure - Rs. 1200.00</p>
+                </article>
+                <article>
+                    <h3>Premium Screenings</h3>
+                    <img src="images/iaf.jpg" alt="Romantic Drama Poster" class="movie-img">
+                    <p>Romantic Drama - Rs. 1500.00</p>
+                </article>
+                <article>
+                    <h3>3D & IMAX Shows</h3>
+                    <img src="images/yanm.jpg" alt="Fantasy Epic Poster" class="movie-img">
+                    <p>Fantasy Epic - Rs. 1300.00</p>
+                </article>
+                <article>
+                    <h3>Special Discount Offers</h3>
+                    <img src="images/SB.jpg" alt="Family Movie Poster" class="movie-img">
+                    <p>Family Movie - Rs. 1800.00</p>
+                </article>
+            </div>            
+            <div class="form-container">
+                <h3>Select Tickets</h3>
+                
+                <label for="movie-type">Movie Type:</label>
+                <select id="movie-type" onchange="updateMovies()">
+                    <option value="">--Select Type--</option>
+                    <option value="action">Action</option>
+                    <option value="scifi">Sci-Fi</option>
+                    <option value="romance">Romance</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="family">Family</option>
+                </select>
+            
+                <label for="movie">Movie:</label>
+                <select id="movie">
+                    <option value="">--Select a movie--</option>
+                </select>
+            
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1">
+            
+                <button onclick="addToCart()">Add to Cart</button>
+                <button onclick="saveFavorite()">Save as Favorite</button>
+                <button onclick="applyFavorite()">Apply Favorite</button>
+            </div>
+            <section class="cart">
+                <h3>Selected Tickets</h3>
+                <table id="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Movie</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-body"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">Total</td>
+                            <td id="cart-total">Rs .0.00</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <button onclick="proceedToCheckout()">Proceed to Checkout</button>
+            </section>
+        </section>
+        <section class="checkout hidden" id="checkout">
+            <h2>Checkout</h2>
+            <div class="form-container">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            
+                <label for="seat">Seat Preference:</label>
+                <input type="text" id="seat" name="seat" placeholder="e.g., A12, B5">
+            
+                <label for="payment">Payment Info:</label>
+                <input type="text" id="payment" name="payment" placeholder="Card Number">
+            
+                <div class="card-details-row">
+                    <div class="card-detail">
+                        <label for="expiry">Expiry:</label>
+                        <input type="text" id="expiry" name="expiry" placeholder="MM/YY">
+                    </div>
+                    <div class="card-detail">
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" name="cvv" placeholder="123">
+                    </div>
+                </div>
+            
+                <button onclick="completePurchase()">Pay</button>
+            </div>
+            
+        </section>
+        <div class="confirmation-wrapper">
+            <section class="confirmation hidden" id="confirmation">
+                <h2>Thank You for Your Purchase!</h2>
+                <p id="confirmation-details"></p>
+            </section>
+        </div>
+        
+    </main>
+    <footer>
+        <p>© 2025 FilmZone. All rights reserved.</p>
+    </footer>
+</body>
+</html>
